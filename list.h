@@ -8,6 +8,7 @@
 
 #ifndef LIST_H
 #define LIST_H
+#include "tinfo.h"
 #include <stdbool.h>
 
 typedef int TInfo;
@@ -21,10 +22,6 @@ typedef struct SNode TNode;
 typedef TNode* TList;
 
 
-
-bool is_greater(int a, int b);
-bool is_equal(int a, int b);
-void info_print(int info);
 TNode* node_create(TInfo info);
 void node_destroy(TNode* node);
 TList list_create();

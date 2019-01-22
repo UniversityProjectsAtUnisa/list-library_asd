@@ -2,23 +2,6 @@
 #include <stdio.h>
 #include "list.h"
 
-bool is_greater(int a, int b) {
-    if(a>b)
-        return true;
-    else
-        return false;
-}
-
-bool is_equal(int a, int b) {
-    if(a==b)
-        return true;
-    else
-        return false;
-}
-
-void info_print(int info) {
-    printf("%d ", info);
-}
 
 TNode* node_create(TInfo info) { 
     TNode *new_node;
@@ -42,7 +25,7 @@ TList list_create(){
 TList list_insert(TList l, TInfo info) {
     TNode* new_node;
     TList new_list;
-    if((l==NULL) || (is_greater(l->info, info))) {
+    if((l==NULL) || (info_greater(l->info, info))) {
         new_node=node_create(info);
         if(new_node==NULL)
             return NULL;
@@ -56,9 +39,9 @@ TList list_insert(TList l, TInfo info) {
 
 TList list_delete_node(TList l, TInfo info) {
     TNode* node;
-    if(l==NULL || is_greater(l->info, info))
+    if(l==NULL || info_greater(l->info, info))
         return l;
-    if(is_equal(l->info, info)) {
+    if(info_equal(l->info, info)) {
         node=l->link;
         node_destroy(l);
         return node;
@@ -68,9 +51,9 @@ TList list_delete_node(TList l, TInfo info) {
 }
 
 TNode* list_search(TList l, TInfo info) {
-    if(l==NULL || is_greater(l->info, info))
+    if(l==NULL || info_greater(l->info, info))
         return NULL;
-    if(is_equal(l->info, info))
+    if(info_equal(l->info, info))
         return l;
     return list_search(l->link, info);
 }
