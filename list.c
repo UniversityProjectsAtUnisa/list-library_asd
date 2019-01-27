@@ -22,6 +22,15 @@ TList list_create(){
     return NULL;
 }
 
+TList list_destroy(TList l) {
+    if (l == NULL)
+        return l;
+
+    l->link = list_destroy(l->link);
+    node_destroy(l);
+    return l;
+}
+
 TList list_insert(TList l, TInfo info) {
     TNode* new_node;
     TList new_list;
@@ -59,8 +68,8 @@ TNode* list_search(TList l, TInfo info) {
 }
 
 void list_visit(TList l) {
-    if(l==NULL)
-        return;
-    info_print(l->info);
-    list_visit(l->link);
+    if(l!=NULL) {
+        info_print(l->info);
+        list_visit(l->link);
+    }    
 }
