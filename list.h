@@ -25,6 +25,7 @@ typedef TNode* TList;
 TNode* node_create(TInfo info);
 void node_destroy(TNode* node);
 TList list_create();
+TList list_destroy(TList l);
 TList list_insert(TList l, TInfo info);
 TList list_delete_node(TList l, TInfo info);
 TNode* list_search(TList l, TInfo info);
